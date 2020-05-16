@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script>
+ var myApp = angular.module("myModule", []);
+ myApp.controller("myController",function($scope)
+	{
+		var someData =
+		{
+		firstName: 'SRI',
+		surname: 'RAM',
+		dateJoined: new Date(2019, 04, 04),
+		consumption: 123.659855,
+		plan: 'super-basic-plan',
+		monthlyUsageHistory:
+			[
+			123.659855,
+			89.645222,
+			97.235644,
+			129.555555,
+			188.699855,
+			65.652545,
+			123.659855,
+			89.645222,
+			97.235644,
+			129.555555,
+			188.699855,
+			65.652545
+			]
+		}
+	$scope.data = someData;
+	});
+</script>
+</head>
+
+<body ng-app="myModule" ng-controller="myController">
+<h2>Gigabytes used over the last 3 months</h2>
+	<ul>
+		<li ng-repeat="gigabytes in data.monthlyUsageHistory | limitTo:5">
+			{{ gigabytes | number:2}}
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script>
+
+ var myApp = angular.module("myModule", []);
+ myApp.controller("myController", function($scope)
+	{
+		var emp =
+		[
+			{name: "Sam", age: "20", salary: "90000"},
+			{name: "Tom", age: "20", salary: "75000"},
+			{name: "Ram", age: "20", salary: "80000"}
+		];
+		
+		$scope.employee = emp;
+	});
+	
+</script> 
+<body>
+<div ng-app="myModule" ng-controller="myController">
+<input type="text" ng-model="searchText" /><br />
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Salary</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr>
+				<td>Names in Ascending Order</td>
+			</tr>
+			
+			<tr ng-repeat="e in employee | filter:searchText | orderBy: 'name' : false">
+				<td>{{e.name | uppercase}}</td>
+				<td>{{e.age}}</td>
+				<td>{{e.salary}}</td>
+			</tr>
+			
+			<tr /><tr /><tr /><tr />
+			
+			<tr>
+				<td>Salary in Descending Order</td>
+			</tr>
+		
+			<tr ng-repeat="e in employee | filter:searchText | orderBy: '-salary'">
+				<td>{{e.name | uppercase}}</td>
+				<td>{{e.age}}</td>
+				<td>{{e.salary}}</td>
+			</tr>
+		</tbody> 
+	</table>
+</div> 
+</body>
+</html>

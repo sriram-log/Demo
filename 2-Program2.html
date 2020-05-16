@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script>
+ var myApp = angular.module("myModule", []);
+ myApp.controller("myController",function($scope)
+	{
+		var someData = 
+		{
+		firstName: 'SRI',
+		surname: 'RAM',
+		dateJoined: new Date(2019, 04, 04),
+		consumption: 123.659855,
+		plan: 'super-basic-plan'
+		};
+		
+		$scope.data = someData;
+	});
+</script>
+</head>
+<body ng-app="myModule" ng-controller="myController">
+<p>
+	Consumption: {{data.consumption }}
+	<br/>
+	Consumption approx decimal: {{data.consumption | number }}
+</p>
+
+<p>
+	Data used this quarter:
+	<strong> {{ data.consumption | number:2 }} </strong>gigabytes
+</p>
+
+</body>
+</html>

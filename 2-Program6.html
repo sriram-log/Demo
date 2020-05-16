@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script>
+ var myApp = angular.module("myModule", []);
+ myApp.controller("MyFilterDemoCtrl", function($scope)
+	{
+		var someData =
+		{
+			firstName: 'DAVID',
+			surname: 'GRANT',
+			dateJoined: new Date(2010, 2, 23),
+			consumption: 123.659855,
+			plan: 'super-basic-plan'
+		};
+		
+		$scope.data = someData;		
+	});
+	
+ myApp.filter('smallcase', function() 
+	{
+		return function(txt) 
+			{
+			return (txt.toLowerCase());
+			}
+	});
+	
+ myApp.filter('capitalize', function()
+	{
+		return function(txt)
+			{
+			return (txt.toUpperCase());
+			}
+	});
+	
+</script>
+</head>
+<body ng-controller="MyFilterDemoCtrl">
+<p>Plan type: {{data.plan | smallcase}}</p>
+<p>Plan type: {{data.plan | capitalize}}</p>
+</body>
+</html>

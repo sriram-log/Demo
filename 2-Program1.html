@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script>
+ var myApp = angular.module("myModule", []);
+ myApp.controller("myController",function($scope)
+	{
+		var someData = 
+		{
+		firstName: 'SRI',
+		surname: 'RAM',
+		dateJoined: new Date(2010, 2, 23),
+		consumption: 123.659855,
+		plan: 'super-basic-plan'
+		};
+		
+		$scope.data = someData;
+	});
+	
+</script>
+</head>
+<body ng-app="myModule" ng-controller="myController">
+
+<p><!-- Unfiltered data -->
+<strong>First Name</strong>: {{data.firstName}}<br/>
+<strong>Surname:</strong> {{data.surname}}
+</p>
+
+<p><!-- Filtered data -->
+<strong>First Name</strong>: {{data.firstName | lowercase}}<br/>
+<strong>Surname:</strong> {{data.surname | lowercase }}
+</p>
+
+</body>
+</html>
